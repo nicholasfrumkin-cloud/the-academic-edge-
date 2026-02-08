@@ -134,7 +134,7 @@
 
     .article {
       width: 100%;
-      max-width: 760px; /* clean WSJ-like reading column */
+      max-width: 760px;
     }
 
     .kicker {
@@ -207,7 +207,6 @@
       color: #1d1d1f;
     }
 
-    /* Optional subtle footer line */
     .rule {
       margin-top: 34px;
       border-top: 1px solid #d2d2d7;
@@ -216,19 +215,10 @@
       font-size: 12px;
       text-align: center;
     }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 36px; }
-      .headline { font-size: 34px; }
-      .deck { font-size: 18px; }
-      .body { font-size: 17px; }
-      .nav-content { gap: 16px; }
-    }
   </style>
 </head>
 
 <body>
-  <!-- Top Bar -->
   <div class="top-bar">
     <div class="top-bar-content">
       <div class="top-bar-links">
@@ -238,7 +228,6 @@
     </div>
   </div>
 
-  <!-- Header -->
   <header>
     <div class="header-content">
       <h1>THE ACADEMIC EDGE</h1>
@@ -246,7 +235,6 @@
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav>
     <div class="nav-content">
       <a href="#">Home</a>
@@ -255,7 +243,6 @@
     </div>
   </nav>
 
-  <!-- Article Page -->
   <main class="page">
     <div class="article-wrap">
       <article class="article">
@@ -270,30 +257,42 @@
         <div class="meta">
           <span><strong>By</strong> The Academic Edge Desk</span>
           <span class="dot"></span>
-          <span>6 min read</span>
+          <span>8 min read</span>
           <span class="dot"></span>
           <span>Updated Feb. 8, 2026</span>
         </div>
 
         <div class="body">
           <p class="lead">
-            Speed, long criticized as a source of market unfairness, is a central driver of liquidity in modern electronic markets. Faster high-frequency market makers quote tighter prices, execute more trades, and improve overall market quality, while artificial speed limits weaken liquidity and widen spreads.
+            Modern financial markets are built around speed. A small number of high-frequency market makers supply much of the liquidity in electronic exchanges, continuously posting prices at which other investors can trade.
           </p>
 
           <p>
-            In today’s markets, most liquidity is supplied by a small number of high-speed traders who continuously post and update quotes. Speed allows these traders to revise prices quickly, manage inventory risk, and reduce losses from stale quotes when prices move. As speed increases, market makers are willing to quote more aggressively, narrowing bid-ask spreads and increasing execution rates.
+            Their ability to do so depends critically on how quickly they can react to new information. When traders can update quotes rapidly, they are better able to manage inventory risk, avoid losses from stale prices, and remain active on both sides of the market. The result is tighter bid-ask spreads and more dependable execution.
           </p>
 
           <p>
-            When speed is reduced, the opposite occurs. A natural experiment on NYSE American provides clear evidence. In 2017 the exchange imposed a 350-microsecond delay on all orders, slowing high-frequency traders. Quoted spreads widened, depth at the best prices declined, fill rates fell, and order cancellations increased relative to other exchanges. In 2019, when the delay was removed, these effects reversed. Liquidity improved and spreads tightened, closely tracking changes in trading speed.
+            Liquidity provision is not a passive activity. Market makers face constant exposure to sudden price moves and shifting order flow. If prices change before quotes can be adjusted, traders are vulnerable to losses. Speed reduces that exposure. Faster reaction times allow market makers to quote more aggressively and to provide liquidity across a wider range of market conditions.
           </p>
 
           <p>
-            Faster trading does enable some price discrimination against impatient investors, as market makers can anticipate order flow. But this cost is outweighed by higher liquidity provision. Even traders who occasionally face worse prices benefit from faster markets through quicker execution and lower average trading costs.
+            When speed is constrained, the risk of being caught with outdated prices rises, and market makers respond by widening spreads or withdrawing liquidity altogether. Slower markets make it harder to manage risk and raise the cost of staying active, particularly during periods of volatility.
           </p>
 
           <p>
-            The evidence cuts against the case for speed bumps and latency floors. Slowing markets reduces the incentive to supply liquidity without eliminating informational advantages. Markets function better when speed is allowed to discipline risk, tighten pricing, and support continuous liquidity provision. Policies that restrain speed in the name of fairness risk degrading the quality of markets investors rely on.
+            The high rate of order cancellations often associated with fast trading follows naturally from this environment. Quotes are updated or removed as information changes, inventories accumulate, or prices move. These cancellations are not evidence of illusory liquidity but a reflection of continuous risk management. Faster markets produce more quote updates precisely because traders are adjusting prices to stay in the market.
+          </p>
+
+          <p>
+            Changes in exchange design illustrate how speed affects market outcomes. When trading is deliberately slowed, spreads widen, depth at the best prices declines, and orders are less likely to be filled. Execution becomes less predictable, particularly for investors who rely on immediate liquidity. When speed constraints are lifted, market makers return with tighter prices, deeper books, and higher fill rates.
+          </p>
+
+          <p>
+            Speed also confers an advantage in anticipating order flow. Fast market makers can sometimes identify impatient traders and adjust prices accordingly. That dynamic exists, but it does not dominate the overall effect. The broader benefit of speed is greater liquidity, quicker execution, and lower average trading costs.
+          </p>
+
+          <p>
+            The implication for market design is uncomfortable but clear. Speed restrictions reduce the incentive to supply liquidity without eliminating informational advantages. By increasing risk for market makers, such rules lead to wider spreads and thinner markets. Markets function best when prices can adjust quickly and risk can be actively managed.
           </p>
         </div>
 
