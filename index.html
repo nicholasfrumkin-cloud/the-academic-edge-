@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Academic Edge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #1d1d1f;
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: #1d1d1f;
+            color: #f5f5f7;
+            padding: 8px 0;
+            font-size: 12px;
+            border-bottom: 1px solid #000;
+        }
+
+        .top-bar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .top-bar-links a {
+            color: #f5f5f7;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: opacity 0.2s;
+        }
+
+        .top-bar-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #d2d2d7;
+            padding: 24px 0 16px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 48px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            color: #1d1d1f;
+        }
+
+        .tagline {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #86868b;
+            margin-top: 6px;
+        }
+
+        /* Navigation */
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid #d2d2d7;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            height: 48px;
+        }
+
+        nav a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: color 0.2s;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: #0071e3;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0071e3;
+            transition: width 0.2s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 32px;
+        }
+
+        .main-content {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 64px;
+            align-self: start;
+        }
+
+        /* Featured Story */
+        .featured {
+            padding-bottom: 24px;
+            border-bottom: 1px solid #d2d2d7;
+            margin-bottom: 24px;
+        }
+
+        .featured-story {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 130px;
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            border-radius: 4px;
+        }
+
+        .featured-content h2 {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+        }
+
+        .featured-content .meta {
+            font-size: 11px;
+            color: #86868b;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .featured-content p {
+            font-size: 14px;
+            color: #515154;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #0071e3;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .read-more:hover {
+            opacity: 0.7;
+        }
+
+        .read-more::after {
+            content: ' →';
+        }
+
+        /* Section Grid */
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #1d1d1f;
+            color: #1d1d1f;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .article-card {
+            background: #ffffff;
+            transition: transform 0.2s;
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 16px;
+        }
+
+        .article-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 110px;
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            border-radius: 4px;
+        }
+
+        .article-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 6px;
+            color: #1d1d1f;
+        }
+
+        .article-card h3 a {
+            color: #1d1d1f;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .article-card h3 a:hover {
+            color: #0071e3;
+        }
+
+        .article-card-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card .excerpt {
+            font-size: 13px;
+            color: #515154;
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .article-card .meta {
+            font-size: 10px;
+            color: #86868b;
+            letter-spacing: 0.3px;
+        }
+
+        /* Opinion Section */
+        .opinion-section {
+            background: #ffffff;
+        }
+
+        .opinion-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #1d1d1f;
+            color: #1d1d1f;
+        }
+
+        .opinion-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .opinion-card {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        .opinion-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .opinion-image {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .opinion-content h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .opinion-content h3 a {
+            color: #1d1d1f;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .opinion-content h3 a:hover {
+            color: #0071e3;
+        }
+
+        .opinion-content .author {
+            font-size: 11px;
+            color: #86868b;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .opinion-content p {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #f5f5f7;
+            border-top: 1px solid #d2d2d7;
+            padding: 48px 0 24px;
+            margin-top: 48px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h4 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section a {
+            color: #515154;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: #0071e3;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 24px 0;
+            border-top: 1px solid #d2d2d7;
+            text-align: center;
+            font-size: 11px;
+            color: #86868b;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .featured-story {
+                grid-template-columns: 1fr;
+            }
+
+            .article-card {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-content {
+                gap: 16px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-links">
+                <a href="#">Subscribe</a>
+                <a href="#">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>THE ACADEMIC EDGE</h1>
+            <div class="tagline">Concise Insights Based on Academic Articles in Business, Finance, and Politics</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="#">Home</a>
+            <a href="#">US Markets</a>
+            <a href="#">Global Markets</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Left Column: Main Content -->
+        <div class="main-content">
+            <!-- Featured Story -->
+            <div class="featured">
+                <div class="featured-story">
+                    <div class="featured-image"></div>
+                    <div class="featured-content">
+                        <h2>Breakthrough in Quantum Computing Brings Practical Applications Within Reach</h2>
+                        <div class="meta">By Sarah Chen • 4 min read</div>
+                        <p>Researchers at leading institutions have achieved a significant milestone in quantum error correction, potentially accelerating the timeline for commercially viable quantum computers.</p>
+                    </div>
+                </div>
+                <div class="featured-story">
+                    <div class="featured-image"></div>
+                    <div class="featured-content">
+                        <h2>Federal Reserve Signals Policy Shift Amid Economic Uncertainty</h2>
+                        <div class="meta">By Michael Torres • 5 min read</div>
+                        <p>Central bank officials indicate potential changes to interest rate strategy as new data reveals unexpected trends in inflation and employment.</p>
+                    </div>
+                </div>
+                <div class="featured-story">
+                    <div class="featured-image"></div>
+                    <div class="featured-content">
+                        <h2>Global Supply Chain Restructuring Accelerates</h2>
+                        <div class="meta">By Elena Rodriguez • 6 min read</div>
+                        <p>Major corporations announce sweeping changes to manufacturing and distribution networks in response to geopolitical pressures and sustainability goals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- US Markets Section -->
+            <section class="section">
+                <h2 class="section-header">US Markets</h2>
+                <div class="article-grid">
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">Tech Stocks Rally on Strong Earnings Reports</a></h3>
+                            <p class="excerpt">Major technology companies exceed analyst expectations, driving market gains across multiple sectors.</p>
+                            <div class="meta">By Rachel Kim • 4 min read</div>
+                        </div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">Energy Sector Faces New Regulatory Framework</a></h3>
+                            <p class="excerpt">Proposed policies could reshape investment landscape for oil, gas, and renewable energy companies.</p>
+                            <div class="meta">By Prof. David Chen • 5 min read</div>
+                        </div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">Banking Industry Adapts to Digital Transformation</a></h3>
+                            <p class="excerpt">Financial institutions invest heavily in technology as consumer preferences shift toward online services.</p>
+                            <div class="meta">By Anna Kowalski • 6 min read</div>
+                        </div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">Real Estate Markets Show Regional Variations</a></h3>
+                            <p class="excerpt">Housing prices diverge across metropolitan areas as demographic patterns and remote work reshape demand.</p>
+                            <div class="meta">By Lisa Anderson • 5 min read</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Global Markets Section -->
+            <section class="section">
+                <h2 class="section-header">Global Markets</h2>
+                <div class="article-grid">
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">European Central Bank Maintains Cautious Stance</a></h3>
+                            <p class="excerpt">ECB officials emphasize data-dependent approach amid mixed economic signals from eurozone members.</p>
+                            <div class="meta">By Dr. Thomas Liu • 7 min read</div>
+                        </div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">Asian Manufacturing Hub Shifts Location</a></h3>
+                            <p class="excerpt">Production centers migrate as companies seek to balance cost efficiency with supply chain resilience.</p>
+                            <div class="meta">By Kevin Zhang • 6 min read</div>
+                        </div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">Emerging Markets Face Currency Volatility</a></h3>
+                            <p class="excerpt">Developing economies navigate challenges from dollar strength and changing capital flows.</p>
+                            <div class="meta">By Priya Sharma • 5 min read</div>
+                        </div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">International Trade Agreements Under Review</a></h3>
+                            <p class="excerpt">Multiple nations reconsider existing partnerships as global economic dynamics evolve.</p>
+                            <div class="meta">By Dr. James Park • 8 min read</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Business & Finance Section -->
+            <section class="section">
+                <h2 class="section-header">Business & Finance</h2>
+                <div class="article-grid">
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">Corporate Governance Standards Face Scrutiny</a></h3>
+                            <p class="excerpt">New research highlights gaps between stated principles and actual practices in boardroom decision-making.</p>
+                            <div class="meta">By Prof. Jennifer Martinez • 9 min read</div>
+                        </div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">Private Equity Industry Adapts Strategy</a></h3>
+                            <p class="excerpt">Investment firms modify approaches as interest rates and market conditions shift expectations.</p>
+                            <div class="meta">By Dr. Robert Chang • 7 min read</div>
+                        </div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-image"></div>
+                        <div class="article-card-content">
+                            <h3><a href="#">ESG Investing Enters New Phase</a></h3>
+                            <p class="excerpt">Environmental, social, and governance factors become increasingly integrated into mainstream investment analysis.</p>
+                            <div class="meta">By Prof. Margaret Sullivan • 6 min read</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Column: Opinion Sidebar -->
+        <aside class="sidebar">
+            <div class="opinion-section">
+                <h2 class="opinion-header">Opinion</h2>
+                <div class="opinion-grid">
+                    <div class="opinion-card">
+                        <div class="opinion-image"></div>
+                        <div class="opinion-content">
+                            <h3><a href="#">The Future of Monetary Policy in an AI Economy</a></h3>
+                            <div class="author">By Prof. Margaret Sullivan</div>
+                        </div>
+                    </div>
+                    <div class="opinion-card">
+                        <div class="opinion-image"></div>
+                        <div class="opinion-content">
+                            <h3><a href="#">Why Market Volatility May Be the New Normal</a></h3>
+                            <div class="author">By Dr. Thomas Liu</div>
+                        </div>
+                    </div>
+                    <div class="opinion-card">
+                        <div class="opinion-image"></div>
+                        <div class="opinion-content">
+                            <h3><a href="#">Rethinking Corporate Tax Strategy</a></h3>
+                            <div class="author">By Prof. Jennifer Martinez</div>
+                        </div>
+                    </div>
+                    <div class="opinion-card">
+                        <div class="opinion-image"></div>
+                        <div class="opinion-content">
+                            <h3><a href="#">The Case for Regulatory Reform</a></h3>
+                            <div class="author">By Dr. Robert Chang</div>
+                        </div>
+                    </div>
+                    <div class="opinion-card">
+                        <div class="opinion-image"></div>
+                        <div class="opinion-content">
+                            <h3><a href="#">Global Trade Needs New Framework</a></h3>
+                            <div class="author">By Prof. David Chen</div>
+                        </div>
+                    </div>
+                    <div class="opinion-card">
+                        <div class="opinion-image"></div>
+                        <div class="opinion-content">
+                            <h3><a href="#">Inflation Expectations and Market Behavior</a></h3>
+                            <div class="author">By Dr. Sarah Mitchell</div>
+                        </div>
+                    </div>
+                    <div class="opinion-card">
+                        <div class="opinion-image"></div>
+                        <div class="opinion-content">
+                            <h3><a href="#">The End of the Free Trade Era?</a></h3>
+                            <div class="author">By Prof. Michael Ross</div>
+                        </div>
+                    </div>
+                    <div class="opinion-card">
+                        <div class="opinion-image"></div>
+                        <div class="opinion-content">
+                            <h3><a href="#">Central Banking in the Digital Age</a></h3>
+                            <div class="author">By Dr. Emily Zhang</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sections</h4>
+                <ul>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Science</a></li>
+                    <li><a href="#">Policy</a></li>
+                    <li><a href="#">Education</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Features</h4>
+                <ul>
+                    <li><a href="#">Opinion</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Podcasts</a></li>
+                    <li><a href="#">Newsletters</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Ethics Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Advertise</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Subscribe</h4>
+                <ul>
+                    <li><a href="#">Student Plans</a></li>
+                    <li><a href="#">Institutional Access</a></li>
+                    <li><a href="#">Gift Subscriptions</a></li>
+                    <li><a href="#">Group Rates</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Academic Edge. All rights reserved. • <a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a></p>
+        </div>
+    </footer>
+</body>
+</html>
